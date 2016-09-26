@@ -42,12 +42,11 @@ function ajax_register(){
 	
 	global $bonuin_options;
 	
-	$default_package_id=  $bonuin_options['bonuin_default_package'];
+	
 	
     // Nonce is checked, get the POST data and sign user on
     $info = array();
   	$info['user_nicename'] = $info['nickname'] = $info['display_name'] = $info['first_name'] = $info['user_login'] = sanitize_user($_POST['username']) ;
-    $info['user_purchased_package'] = $default_package_id;
     $info['user_pass'] = sanitize_text_field($_POST['password']);
 	$info['user_email'] = sanitize_email( $_POST['email']);
 	
@@ -132,7 +131,7 @@ function ajax_forgotPassword(){
 		// if  update user return true then lets send user an email containing the new password
 		if( $update_user ) {
 			
-			$from = 'info@tomplabs.com'; // Set whatever you want like mail@yourdomain.com
+			$from = 'info@youremail.com'; // Set whatever you want like mail@yourdomain.com
 			
 			if(!(isset($from) && is_email($from))) {		
 				$sitename = strtolower( $_SERVER['SERVER_NAME'] );
